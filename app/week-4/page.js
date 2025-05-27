@@ -2,11 +2,8 @@ import NewItem from "./new-item";
 
 export default function Page() {
     return(
-        <main>
-        
+        <main className="flex justify-center">
         <NewItem/>
-
         </main>
-
     );
 }
