@@ -29,16 +29,24 @@ export default function ItemList(){
     })
   }
 
+  const buttonStyleCheck=(buttonValue)=>{
+    if (buttonValue == sortBy) return "bg-amber-600 ml-3 px-3 rounded hover:bg-amber-500"
+    return "bg-slate-800 ml-3 px-3 rounded hover:bg-slate-700"
+  }
 
 
+  const groupedItems = itemArray.reduce((group, item)=>{
 
-const buttonStyleCheck=(buttonValue)=>{
-  if (buttonValue == sortBy) return "bg-amber-600 ml-3 px-3 rounded hover:bg-amber-500"
-  return "bg-slate-800 ml-3 px-3 rounded hover:bg-slate-700"
-}
+    const category = item.category //Get the item's category
 
+    if (group[category]==null) group[category] = [] //Check if theres items in that category and create one if there isn't
+   
+    group[category].push(item) //Add the item to the group
 
+    return group
+  }, []) //{} is the initial value. An empty array
 
+  let groups = Object.keys(groupedItems).sort()
 
 return(
   <section>
@@ -55,13 +63,18 @@ return(
               value="category"
               className={buttonStyleCheck("category")}
               >Category</button>
+{/* 
+              <button onClick={handleSortByChange} 
+              value="grouped-category"
+              className={buttonStyleCheck("grouped-category")}
+              >Grouped by Category</button> */}
 
           </div>
       </header>
       <div>
-          {itemArray.map( (item)=> (
-              <Item key={item.id} item={item}/>
-          ) )}
+        {itemArray.map( (item)=> (
+          <Item key={item.id} item={item}/>
+        ))}     
       </div>
   </section>
 );
