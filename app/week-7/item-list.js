@@ -3,7 +3,7 @@
 import Item from "./item";
 import { useState } from "react";
 
-export default function ItemList({items}){
+export default function ItemList( { items } ){
   let itemArray = items.map((item)=>({...item}))
 
   const [sortBy,setSortBy] = useState("name")
