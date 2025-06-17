@@ -1,12 +1,10 @@
 "use client"
 
 import Item from "./item";
-import itemData from "./items.json";
-
 import { useState } from "react";
 
-export default function ItemList(){
-  let itemArray = itemData.map((item)=>({...item}))
+export default function ItemList({items}){
+  let itemArray = items.map((item)=>({...item}))
 
   const [sortBy,setSortBy] = useState("name")
 

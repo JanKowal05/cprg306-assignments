@@ -6,7 +6,7 @@ import itemsData from "./items.json";
 import { useState } from "react";
 
 export default function Page(){
-    let itemsArray = [...itemsData]
+    let itemsArray = itemsData.map((item)=>({...item}))
     const [items, setItems] = useState(itemsArray)
 
     const handleAddItem=(newItem)=>{

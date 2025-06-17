@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-export default function NewItem(){
+export default function NewItem({ onAddItem }){
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1)
-    const [category, setCategory] = useState("Produce")
+    const [category, setCategory] = useState("produce")
 
 
     const nameChangeHandler=(event)=>{setName(event.target.value)}
@@ -40,22 +40,47 @@ export default function NewItem(){
         return enabledButton;
     }
 
+
+    //Define possible characters for ID
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    
+    const generateId=(length)=>{
+        let generatedString = "" //Initialize the ID
+ 
+        for(let i=0; i<length;i++){
+            // This loop will pick a random character from 'chars',
+            // and add it to the 'generatedString' for the length specified.
+
+            let rand = Math.floor(Math.random() * chars.length)
+
+            generatedString += chars[rand]
+        }
+
+        return generatedString; //Return the generated ID
+    }
+
+
     const handleSubmit =(event)=>{
         event.preventDefault();
 
         let item = {
-            Name: name,
-            Quantity: quantity,
-            Category: category
+            id: generateId(16),
+            name: name,
+            quantity: quantity,
+            category: category
         }
 
         console.log(item);
 
+        onAddItem(item)
+
+        /*
         alert(`
             Item Name: ${item.Name} 
             Quantity: ${item.Quantity} 
             Category: ${item.Category} 
         `);
+        */
 
         setName("");
         setQuantity(1);
@@ -82,17 +107,17 @@ export default function NewItem(){
 
                 <div>
                     <select className="h-16 bg-teal-700 rounded text-white p-2 " onChange={categoryChangeHandler} value={category}>
-                        <option>Produce</option>
-                        <option>Dairy</option>
-                        <option>Bakery</option>
-                        <option>Meat</option>
-                        <option>Frozen Foods</option>
-                        <option>Canned Goods</option>
-                        <option>Dry Goods</option>
-                        <option>Beverages</option>
-                        <option>Snacks</option>
-                        <option>Household</option>
-                        <option>Other</option>
+                        <option>produce</option>
+                        <option>dairy</option>
+                        <option>bakery</option>
+                        <option>meat</option>
+                        <option>frozen foods</option>
+                        <option>canned goods</option>
+                        <option>dry goods</option>
+                        <option>beverages</option>
+                        <option>snacks</option>
+                        <option>household</option>
+                        <option>other</option>
                     </select>
                 </div>
 
