@@ -6,6 +6,7 @@ import itemsData from "./items.json";
 import { useState } from "react";
 import MealIdeas from "./meal-ideas";
 import { userUserAuth, useUserAuth } from "../_utils/auth-context";
+import Link from "next/link";
 
 export default function Page(){
     const {user} = useUserAuth();
@@ -35,10 +36,11 @@ export default function Page(){
         );
     }else{
         return(    
-            <main className="bg-black">
+            <main className="bg-black m-2">
                     <h1 className="text-xl">Unauthorized User</h1>
                     <p>Please Log-in with your credentials!</p>
-             
+                    <Link href="/week-9/" className="bg-amber-700 p-1 mt-2 rounded hover:bg-amber-500">Back to log-in page</Link>
+
             </main>
         );
     }
