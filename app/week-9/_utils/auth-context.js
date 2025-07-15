@@ -8,7 +8,9 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "./firebase";
- 
+
+
+
 const AuthContext = createContext();
  
 export const AuthContextProvider = ({ children }) => {
