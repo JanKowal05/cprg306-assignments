@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "cprg306-assignments": "file:",
+    "encoding": "^0.1.13",
+    "firebase": "^11.10.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
