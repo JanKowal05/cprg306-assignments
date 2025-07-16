@@ -11,7 +11,7 @@ export default function Page(){
 
     return(
         <div className="p-2">
-            <h1 className="text-2xl">Week 9 Log-In</h1>
+            <h1 className="text-2xl">Log-In</h1>
 
             {user ? (
                 <p className="p-1 mb-2">
@@ -34,7 +34,7 @@ export default function Page(){
                 )}
 
                 {user && 
-                <Link href="week-9/shopping-list" className="bg-cyan-800 rounded p-1 ml-2 hover:bg-cyan-600">Go to shopping list</Link>
+                <Link href="week-10/shopping-list" className="bg-cyan-800 rounded p-1 ml-2 hover:bg-cyan-600">Go to shopping list</Link>
                 }
             </div>
         </div>
